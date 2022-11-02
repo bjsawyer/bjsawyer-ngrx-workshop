@@ -13,6 +13,7 @@ import { ProductsComponent } from './products/products.component'
 const ROUTES: Routes = [
     {
         path: '',
+        pathMatch: 'full',
         redirectTo: 'home',
     },
     {
