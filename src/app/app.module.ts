@@ -5,11 +5,11 @@ import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component'
-import { CartComponent } from './cart/cart.component'
-import { HomeComponent } from './home/home.component'
+import { CartComponent } from './components/cart/cart.component'
+import { HomeComponent } from './components/home/home.component'
+import { NavComponent } from './components/nav/nav.component'
+import { ProductsComponent } from './components/products/products.component'
 import { MaterialModule } from './material.module'
-import { NavComponent } from './nav/nav.component'
-import { ProductsComponent } from './products/products.component'
 
 const ROUTES: Routes = [
   {
