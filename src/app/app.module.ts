@@ -1,3 +1,4 @@
+import { OverlayModule } from '@angular/cdk/overlay'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
@@ -38,6 +39,7 @@ const ROUTES: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(ROUTES),
+    OverlayModule,
   ],
   declarations: [
     AppComponent,
