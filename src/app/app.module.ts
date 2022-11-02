@@ -8,42 +8,44 @@ import { AppComponent } from './app.component'
 import { CartComponent } from './cart/cart.component'
 import { HomeComponent } from './home/home.component'
 import { MaterialModule } from './material.module'
+import { NavComponent } from './nav/nav.component'
 import { ProductsComponent } from './products/products.component'
 
 const ROUTES: Routes = [
-    {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'home',
-    },
-    {
-        path: 'home',
-        component: HomeComponent,
-    },
-    {
-        path: 'products',
-        component: ProductsComponent,
-    },
-    {
-        path: 'cart',
-        component: CartComponent,
-    },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'products',
+    component: ProductsComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+  },
 ]
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        MaterialModule,
-        RouterModule.forRoot(ROUTES),
-    ],
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        ProductsComponent,
-        CartComponent,
-    ],
-    bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    RouterModule.forRoot(ROUTES),
+  ],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    ProductsComponent,
+    CartComponent,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
