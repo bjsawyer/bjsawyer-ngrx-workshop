@@ -15,6 +15,7 @@
   <mat-card-actions>
     <span class="spacer"></span>
     <button
+      *ngIf="view === 'products'"
       mat-button
       color="primary"
       [disabled]="(isProductInCart$(product.id) | async) === true"
@@ -23,9 +24,9 @@
       ADD
     </button>
     <button
+      *ngIf="view === 'cart'"
       mat-button
       color="warn"
-      [disabled]="(isProductInCart$(product.id) | async) === false"
       (click)="removeFromCart(product.id)"
     >
       REMOVE

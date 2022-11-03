@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs'
 })
 export class ProductCardComponent {
   @Input() product: IProduct
+  @Input() view?: 'products' | 'cart' = 'products'
 
   constructor(private _productFacade: ProductFacade) {}
 

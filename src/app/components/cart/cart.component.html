@@ -1,1 +1,9 @@
 <h1>Cart</h1>
+
+<mat-grid-list cols="3">
+  <mat-grid-tile *ngFor="let product of cart$ | async">
+    <div class="card-container">
+      <app-product-card [product]="product" [view]="'cart'"></app-product-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
