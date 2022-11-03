@@ -3,6 +3,9 @@ import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 
 import { RouterModule, Routes } from '@angular/router'
+import { EffectsModule } from '@ngrx/effects'
+import { StoreModule } from '@ngrx/store'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { AppComponent } from './app.component'
 import { CartComponent } from './components/cart/cart.component'
 import { HomeComponent } from './components/home/home.component'
@@ -38,15 +41,22 @@ const ROUTES: Routes = [
     FormsModule,
     MaterialModule,
     RouterModule.forRoot(ROUTES),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 50 }),
+
+    // TODO: Wire up product state module
+    // StoreModule.forFeature( ... ),
+    // EffectsModule.forFeature( ... ),
   ],
   declarations: [
     AppComponent,
+    LoaderComponent,
     NavComponent,
     HomeComponent,
     ProductsComponent,
     CartComponent,
     ProductCardComponent,
-    LoaderComponent,
   ],
   bootstrap: [AppComponent],
 })
