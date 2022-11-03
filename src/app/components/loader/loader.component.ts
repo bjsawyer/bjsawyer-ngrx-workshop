@@ -3,6 +3,7 @@ import { TemplatePortal } from '@angular/cdk/portal'
 import {
   AfterViewInit,
   Component,
+  OnInit,
   TemplateRef,
   ViewChild,
   ViewContainerRef,
@@ -14,18 +15,20 @@ import { Observable, of } from 'rxjs'
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.css'],
 })
-export class LoaderComponent implements AfterViewInit {
+export class LoaderComponent implements OnInit, AfterViewInit {
   @ViewChild('spinnerRef') private _spinnerRef: TemplateRef<any>
-
   private _overlayRef: OverlayRef
-
-  // TODO: Check if any of app's state is loading via a selector
-  private _shouldShowLoader$: Observable<boolean> = of(false)
+  private _shouldShowLoader$: Observable<boolean>
 
   constructor(
     private _viewContainerRef: ViewContainerRef,
     private _overlay: Overlay
   ) {}
+
+  ngOnInit(): void {
+    // TODO: Check if any of app's state is loading via a selector
+    this._shouldShowLoader$ = of(false)
+  }
 
   ngAfterViewInit(): void {
     this._createOverlay()

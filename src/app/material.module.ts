@@ -1,3 +1,4 @@
+import { OverlayModule } from '@angular/cdk/overlay'
 import { NgModule } from '@angular/core'
 import { MatBadgeModule } from '@angular/material/badge'
 import { MatButtonModule } from '@angular/material/button'
@@ -7,9 +8,12 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatToolbarModule } from '@angular/material/toolbar'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
+    OverlayModule,
     MatButtonModule,
     MatToolbarModule,
     MatBadgeModule,
@@ -20,6 +24,8 @@ import { MatToolbarModule } from '@angular/material/toolbar'
     MatDividerModule,
   ],
   exports: [
+    BrowserAnimationsModule,
+    OverlayModule,
     MatButtonModule,
     MatToolbarModule,
     MatBadgeModule,
