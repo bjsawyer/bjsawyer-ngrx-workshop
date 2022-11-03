@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
-import { IProduct } from 'app/services/product.service'
-import { ProductFacade } from 'app/state/product/product.facade'
 import { Observable, of } from 'rxjs'
+import { IProduct } from '../../services/product.service'
+import { ProductFacade } from '../../state/product/product.facade'
 
 @Component({
   selector: 'app-product-card',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { IProduct } from 'app/services/product.service'
-import { ProductFacade } from 'app/state/product/product.facade'
 import { Observable } from 'rxjs'
+import { IProduct } from '../../services/product.service'
+import { ProductFacade } from '../../state/product/product.facade'
 
 @Component({
   selector: 'app-cart',
