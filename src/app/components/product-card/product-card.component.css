@@ -1,6 +1,6 @@
 mat-card {
-  width: 80%;
-  height: 80%;
+  width: 84%;
+  height: 84%;
   display: flex;
   flex-direction: column;
 }
@@ -23,19 +23,17 @@ mat-card {
 }
 
 .image-container {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  overflow: hidden;
+  padding: 16px;
 }
 
 img {
-  max-width: 130px;
-}
-
-.mat-card-image {
-  max-height: 80%;
-  width: unset;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 mat-card-actions {
