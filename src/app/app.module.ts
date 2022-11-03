@@ -11,7 +11,8 @@ import { HomeComponent } from './components/home/home.component'
 import { NavComponent } from './components/nav/nav.component'
 import { ProductsComponent } from './components/products/products.component'
 import { MaterialModule } from './material.module';
-import { ProductCardComponent } from './components/product-card/product-card.component'
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { LoaderComponent } from './components/loader/loader.component'
 
 const ROUTES: Routes = [
   {
@@ -49,6 +50,7 @@ const ROUTES: Routes = [
     ProductsComponent,
     CartComponent,
     ProductCardComponent,
+    LoaderComponent,
   ],
   bootstrap: [AppComponent],
 })
