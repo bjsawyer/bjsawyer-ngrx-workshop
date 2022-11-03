@@ -9,8 +9,12 @@ import { ProductFacade } from '../../state/product/product.facade'
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
-  // TODO: Get products from a state selector instead of directly from the API request
-  products$: Observable<IProduct[]> = this._productFacade.getAllProducts()
+  products$: Observable<IProduct[]>
 
   constructor(private _productFacade: ProductFacade) {}
+
+  ngOnInit(): void {
+    // TODO: Get products from a state selector instead of directly from the API request
+    this.products$ = this._productFacade.getAllProducts()
+  }
 }
