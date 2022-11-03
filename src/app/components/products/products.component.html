@@ -2,35 +2,8 @@
 
 <mat-grid-list cols="3">
   <mat-grid-tile *ngFor="let product of products$ | async">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>{{ product.title }}</mat-card-title>
-        <mat-card-subtitle>${{ product.price }}</mat-card-subtitle>
-      </mat-card-header>
-
-      <div class="image-container">
-        <img mat-card-image [src]="product.image" />
-      </div>
-
-      <mat-card-actions>
-        <span class="spacer"></span>
-        <button
-          mat-button
-          color="primary"
-          [disabled]="(isProductInCart$(product.id) | async) === true"
-          (click)="addToCart(product.id)"
-        >
-          ADD
-        </button>
-        <button
-          mat-button
-          color="warn"
-          [disabled]="(isProductInCart$(product.id) | async) === false"
-          (click)="removeFromCart(product.id)"
-        >
-          REMOVE
-        </button>
-      </mat-card-actions>
-    </mat-card>
+    <div class="card-container">
+      <app-product-card [product]="product"></app-product-card>
+    </div>
   </mat-grid-tile>
 </mat-grid-list>

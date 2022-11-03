@@ -10,7 +10,8 @@ import { CartComponent } from './components/cart/cart.component'
 import { HomeComponent } from './components/home/home.component'
 import { NavComponent } from './components/nav/nav.component'
 import { ProductsComponent } from './components/products/products.component'
-import { MaterialModule } from './material.module'
+import { MaterialModule } from './material.module';
+import { ProductCardComponent } from './components/product-card/product-card.component'
 
 const ROUTES: Routes = [
   {
@@ -47,6 +48,7 @@ const ROUTES: Routes = [
     HomeComponent,
     ProductsComponent,
     CartComponent,
+    ProductCardComponent,
   ],
   bootstrap: [AppComponent],
 })
