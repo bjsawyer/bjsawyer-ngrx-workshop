@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { IProduct } from 'app/state/ui/product-ui/product.interface'
+import { IProduct } from '../../state/ui/product-ui/product.interface'
 import { Observable } from 'rxjs'
 import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
 

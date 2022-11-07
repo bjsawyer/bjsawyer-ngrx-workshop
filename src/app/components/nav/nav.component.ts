@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ProductUiFacade } from 'app/state/ui/product-ui/product-ui.facade'
+import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
 import { Observable, of } from 'rxjs'
 
 @Component({

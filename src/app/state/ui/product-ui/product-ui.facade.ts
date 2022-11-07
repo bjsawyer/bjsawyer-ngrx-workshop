@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { IAppState } from 'app/state/app.state'
+import { IAppState } from '../../../state/app.state'
 import { map, Observable } from 'rxjs'
 import { ProductEntityService } from '../../entity/product-entity/product-entity.service'
 import { IProduct } from './product.interface'
