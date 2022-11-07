@@ -1,4 +1,4 @@
-import { IProductEntity } from '../state/entity/product-entity/product-entity.interface'
+import { IProductEntity } from './product-entity.interface'
 
 export const MOCK_PRODUCTS: IProductEntity[] = [
   {

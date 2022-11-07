@@ -5,13 +5,13 @@ export enum ProductUiActionType {
   EXAMPLE_SUCCESS = '[Product UI] Example Success Action',
 }
 
-export class ExampleAction implements Action {
+export class ExampleUiAction implements Action {
   readonly type = ProductUiActionType.EXAMPLE
   constructor(public payload: boolean) {}
 }
 
-export class ExampleSuccessAction implements Action {
+export class ExampleUiSuccessAction implements Action {
   readonly type = ProductUiActionType.EXAMPLE_SUCCESS
 }
 
-export type ProductUiActions = ExampleAction | ExampleSuccessAction
+export type ProductUiActions = ExampleUiAction | ExampleUiSuccessAction

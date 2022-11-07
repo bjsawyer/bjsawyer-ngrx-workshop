@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { map, Observable, timer } from 'rxjs'
-import { MOCK_PRODUCTS } from '../../../services/mock-products'
+import { MOCK_PRODUCTS } from './mock-products'
 import { IProductEntity } from './product-entity.interface'
 
 /**

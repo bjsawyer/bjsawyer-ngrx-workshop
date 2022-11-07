@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { IAppState } from 'app/state/app.state'
 import { map, Observable } from 'rxjs'
 import { ProductEntityService } from '../../entity/product-entity/product-entity.service'
 import { IProduct } from './product.interface'
@@ -7,7 +9,7 @@ import { IProduct } from './product.interface'
   providedIn: 'root',
 })
 export class ProductUiFacade {
-  constructor(private _productEntityService: ProductEntityService) {}
+  constructor(private _store: Store<IAppState>, private _productEntityService: ProductEntityService) {}
 
   getAllProducts(): Observable<IProduct[]> {
     /**
