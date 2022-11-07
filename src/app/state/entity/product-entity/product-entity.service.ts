@@ -9,7 +9,7 @@ import { IProductEntity } from './product-entity.interface'
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class ProductEntityService {
   constructor() {}
 
   getAllProducts$(): Observable<IProductEntity[]> {

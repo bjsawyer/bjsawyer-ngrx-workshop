@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core'
 import { map, Observable } from 'rxjs'
-import { ProductService } from '../../entity/product-entity/product-entity.service'
+import { ProductEntityService } from '../../entity/product-entity/product-entity.service'
 import { IProduct } from './product.interface'
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductUiFacade {
-  constructor(private _productService: ProductService) {}
+  constructor(private _productService: ProductEntityService) {}
 
   /**
    * @deprecated Switch this to use state and dispatch an action to the store.
