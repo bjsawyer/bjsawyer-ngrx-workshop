@@ -8,7 +8,7 @@ import { ExampleUiAction, ExampleUiSuccessAction, ProductUiActionType } from './
 export class ProductUiEffects {
   constructor(private _actions$: Actions) {}
 
-  public readonly exampleEffect$: Observable<Action> = createEffect(
+  public readonly exampleUiEffect$: Observable<Action> = createEffect(
     (): Observable<Action> =>
       this._actions$.pipe(
         ofType<ExampleUiAction>(ProductUiActionType.EXAMPLE),
