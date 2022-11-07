@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { ProductUiFacade } from 'app/state/ui/product-ui/product-ui.facade'
 import { Observable, of } from 'rxjs'
 
 @Component({
@@ -9,7 +10,7 @@ import { Observable, of } from 'rxjs'
 export class NavComponent implements OnInit {
   numSelectedProducts$: Observable<number>
 
-  constructor() {}
+  constructor(private _facade: ProductUiFacade) {}
 
   ngOnInit(): void {
     // TODO: Get selected products count from state
