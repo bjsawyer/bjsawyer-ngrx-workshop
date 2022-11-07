@@ -1,13 +1,6 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { TemplatePortal } from '@angular/cdk/portal'
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core'
+import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
 import { Observable, of } from 'rxjs'
 
 @Component({
@@ -20,10 +13,7 @@ export class LoaderComponent implements OnInit, AfterViewInit {
   private _overlayRef: OverlayRef
   private _shouldShowLoader$: Observable<boolean>
 
-  constructor(
-    private _viewContainerRef: ViewContainerRef,
-    private _overlay: Overlay
-  ) {}
+  constructor(private _viewContainerRef: ViewContainerRef, private _overlay: Overlay) {}
 
   ngOnInit(): void {
     // TODO: Check if any of app's state is loading via a selector
@@ -41,11 +31,7 @@ export class LoaderComponent implements OnInit, AfterViewInit {
   private _createOverlay(): void {
     this._overlayRef = this._overlay.create({
       hasBackdrop: true,
-      positionStrategy: this._overlay
-        .position()
-        .global()
-        .centerHorizontally()
-        .centerVertically(),
+      positionStrategy: this._overlay.position().global().centerHorizontally().centerVertically(),
     })
   }
 
@@ -59,9 +45,7 @@ export class LoaderComponent implements OnInit, AfterViewInit {
   }
 
   private _showOverlay(): void {
-    this._overlayRef.attach(
-      new TemplatePortal(this._spinnerRef, this._viewContainerRef)
-    )
+    this._overlayRef.attach(new TemplatePortal(this._spinnerRef, this._viewContainerRef))
   }
 
   private _hideOverlay(): void {

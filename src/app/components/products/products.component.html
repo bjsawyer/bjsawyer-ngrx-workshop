@@ -3,10 +3,7 @@
 <mat-grid-list cols="3">
   <mat-grid-tile *ngFor="let product of products$ | async">
     <div class="card-container">
-      <app-product-card
-        [product]="product"
-        [view]="'products'"
-      ></app-product-card>
+      <app-product-card [product]="product" [view]="'products'"></app-product-card>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

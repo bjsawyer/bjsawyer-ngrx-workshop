@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { Action } from '@ngrx/store'
 import { map, Observable } from 'rxjs'
-import {
-  ExampleAction,
-  ExampleSuccessAction,
-  ProductEntityActionType,
-} from './product-entity.actions'
+import { ExampleAction, ExampleSuccessAction, ProductEntityActionType } from './product-entity.actions'
 
 @Injectable()
 export class ProductEntityEffects {

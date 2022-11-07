@@ -25,13 +25,6 @@
       ADD
     </button>
 
-    <button
-      *ngIf="view === 'cart'"
-      mat-button
-      color="warn"
-      (click)="removeFromCart(product.id)"
-    >
-      REMOVE
-    </button>
+    <button *ngIf="view === 'cart'" mat-button color="warn" (click)="removeFromCart(product.id)">REMOVE</button>
   </mat-card-actions>
 </mat-card>

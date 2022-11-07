@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { Action } from '@ngrx/store'
 import { map, Observable } from 'rxjs'
-import {
-  ExampleAction,
-  ExampleSuccessAction,
-  ProductUiActionType,
-} from './product-ui.actions'
+import { ExampleAction, ExampleSuccessAction, ProductUiActionType } from './product-ui.actions'
 
 @Injectable()
 export class ProductUiEffects {
