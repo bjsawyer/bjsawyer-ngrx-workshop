@@ -5,7 +5,7 @@ import { IProduct, ProductService } from '../../services/product.service'
 @Injectable({
   providedIn: 'root',
 })
-export class ProductFacade {
+export class ProductUiFacade {
   constructor(private _productService: ProductService) {}
 
   /**

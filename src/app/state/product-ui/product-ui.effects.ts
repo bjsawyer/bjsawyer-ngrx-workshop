@@ -5,8 +5,8 @@ import { map, Observable } from 'rxjs'
 import {
   ExampleAction,
   ExampleSuccessAction,
-  ProductActionType,
-} from './product.actions'
+  ProductUiActionType,
+} from './product-ui.actions'
 
 @Injectable()
 export class ProductEffects {
@@ -15,7 +15,7 @@ export class ProductEffects {
   public readonly exampleEffect$: Observable<Action> = createEffect(
     (): Observable<Action> =>
       this._actions$.pipe(
-        ofType<ExampleAction>(ProductActionType.EXAMPLE),
+        ofType<ExampleAction>(ProductUiActionType.EXAMPLE),
         map((action) => new ExampleSuccessAction())
       )
   )
