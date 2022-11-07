@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { Observable, of } from 'rxjs'
 import { IProduct } from '../../services/product.service'
-import { ProductFacade } from '../../state/product/product.facade'
+import { ProductUiFacade } from '../../state/product-ui/product-ui.facade'
 
 @Component({
   selector: 'app-product-card',
@@ -12,7 +12,7 @@ export class ProductCardComponent {
   @Input() product: IProduct
   @Input() view?: 'products' | 'cart' = 'products'
 
-  constructor(private _productFacade: ProductFacade) {}
+  constructor(private _facade: ProductUiFacade) {}
 
   addToCart(id: number): void {
     // TODO: Hook into state
