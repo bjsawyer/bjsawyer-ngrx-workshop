@@ -9,7 +9,7 @@ import {
 } from './product-ui.actions'
 
 @Injectable()
-export class ProductEffects {
+export class ProductUiEffects {
   constructor(private _actions$: Actions) {}
 
   public readonly exampleEffect$: Observable<Action> = createEffect(

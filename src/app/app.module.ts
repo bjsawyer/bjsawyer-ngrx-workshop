@@ -14,6 +14,8 @@ import { NavComponent } from './components/nav/nav.component'
 import { ProductCardComponent } from './components/product-card/product-card.component'
 import { ProductsComponent } from './components/products/products.component'
 import { MaterialModule } from './material.module'
+import { EntityStateModule } from './state/entity/entity-state.module'
+import { UiStateModule } from './state/ui/ui-state.module'
 
 const ROUTES: Routes = [
   {
@@ -44,10 +46,8 @@ const ROUTES: Routes = [
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 50 }),
-
-    // TODO: Wire up product state module
-    // StoreModule.forFeature( ... ),
-    // EffectsModule.forFeature( ... ),
+    UiStateModule,
+    EntityStateModule,
   ],
   declarations: [
     AppComponent,

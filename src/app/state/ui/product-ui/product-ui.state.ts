@@ -1,4 +1,4 @@
-export const PRODUCT_UI_STATE_NAME = 'product'
+export const PRODUCT_UI_STATE_NAME = 'product-ui'
 
 export interface IProductUiState {}
 
