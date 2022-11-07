@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { Observable, of } from 'rxjs'
-import { IProduct } from '../../services/product.service'
+import { IProductEntity } from '../../state/entity/product-entity/product-entity.interface'
 import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
 
 @Component({
@@ -9,7 +9,7 @@ import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent {
-  @Input() product: IProduct
+  @Input() product: IProductEntity
   @Input() view?: 'products' | 'cart' = 'products'
 
   constructor(private _facade: ProductUiFacade) {}

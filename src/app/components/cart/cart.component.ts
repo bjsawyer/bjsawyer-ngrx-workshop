@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { IProduct } from 'app/state/ui/product-ui/product.interface'
 import { Observable, of } from 'rxjs'
-import { IProduct } from '../../services/product.service'
 import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
 
 @Component({

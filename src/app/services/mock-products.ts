@@ -1,6 +1,6 @@
-import { IProduct } from './product.service'
+import { IProductEntity } from '../state/entity/product-entity/product-entity.interface'
 
-export const MOCK_PRODUCTS: IProduct[] = [
+export const MOCK_PRODUCTS: IProductEntity[] = [
   {
     id: 1,
     title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
