@@ -7,14 +7,17 @@ import { IProduct } from './product.interface'
   providedIn: 'root',
 })
 export class ProductUiFacade {
-  constructor(private _productService: ProductEntityService) {}
+  constructor(private _productEntityService: ProductEntityService) {}
 
-  /**
-   * @deprecated Switch this to use state and dispatch an action to the store.
-   */
   getAllProducts(): Observable<IProduct[]> {
-    // TODO: Move below mapping logic to a UI selector
-    return this._productService.getAllProducts$().pipe(
+    /**
+     * TODO: Refactor as such:
+     * 1. Move API request logic to entity state
+     * 2. Move entity-to-UI mapping to UI state
+     * 3. Update this to be a void method that simply dispatches an action
+     * 4. Remove `ProductEntityService` from facade
+     */
+    return this._productEntityService.getAllProducts$().pipe(
       map((productEntities) =>
         productEntities.map(
           (productEntity): IProduct => ({
