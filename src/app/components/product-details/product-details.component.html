@@ -1,0 +1,14 @@
+<ng-container *ngIf="selectedProduct$ | async as selectedProduct">
+  <h1>
+    Name: <b>{{ selectedProduct.title }}</b>
+  </h1>
+  <h3>
+    ID: <b>{{ selectedProduct.id }}</b>
+  </h3>
+  <h3>
+    Price: <b>{{ selectedProduct.price }}</b>
+  </h3>
+  <div class="image-container">
+    <img [src]="selectedProduct.image" />
+  </div>
+</ng-container>

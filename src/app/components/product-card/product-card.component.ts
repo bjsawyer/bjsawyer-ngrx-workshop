@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { Observable, of } from 'rxjs'
-import { IProductEntity } from '../../state/entity/product-entity/product-entity.interface'
 import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
+import { IProduct } from '../../state/ui/product-ui/product.interface'
 
 @Component({
   selector: 'app-product-card',
@@ -10,13 +10,13 @@ import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent {
-  @Input() product: IProductEntity
+  @Input() product: IProduct
   @Input() view?: 'products' | 'cart' = 'products'
 
   constructor(private _facade: ProductUiFacade, private _router: Router) {}
 
   viewProduct(id: number): void {
-    
+    // TODO: Dispatch action to set selected product ID in state
     this._router.navigate(['product'])
   }
 
