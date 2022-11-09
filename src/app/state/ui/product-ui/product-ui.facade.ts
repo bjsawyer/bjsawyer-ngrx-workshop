@@ -9,9 +9,16 @@ import { IProduct } from './product.interface'
   providedIn: 'root',
 })
 export class ProductUiFacade {
+  // TODO: Update below properties with selectors
+  products$: Observable<IProduct[]>
+  cart$: Observable<IProduct[]>
+  selectedProduct$: Observable<IProduct>
+  numSelectedProducts$: Observable<number>
+  isProductInCart$: Observable<boolean>
+
   constructor(private _store: Store<IAppState>, private _productEntityService: ProductEntityService) {}
 
-  getAllProducts(): Observable<IProduct[]> {
+  getProducts(): Observable<IProduct[]> {
     /**
      * TODO: Refactor as such:
      * 1. Move API request logic to entity state
@@ -31,5 +38,13 @@ export class ProductUiFacade {
         )
       )
     )
+  }
+
+  addProductToCart(id: number): void {
+    // TODO: Dispatch action
+  }
+
+  removeProductFromCart(id: number): void {
+    // TODO: Dispatch action
   }
 }

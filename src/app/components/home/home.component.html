@@ -24,6 +24,12 @@
     </ul>
   </li>
   <li>
+    Product Details
+    <ul>
+      <li>Details of a given product</li>
+    </ul>
+  </li>
+  <li>
     Cart
     <ul>
       <li>Products the user has selected for purchase</li>
@@ -73,23 +79,59 @@
         Create two new <b>actions</b> (one to trigger the request, and one to store them after the request completes)
       </li>
       <li>
-        Add new cases to the <b>reducer</b> for each action above to update the <b>isLoading</b>, <b>hasLoaded</b>, and
-        <b>entities</b> state properties
+        Add new cases to the <b>reducer</b> for each action above to update the <i>isLoading</i>, <i>hasLoaded</i>, and
+        <i>entities</i> state properties
       </li>
       <li>
         Add a new <b>effect</b> observable to listen for the request trigger action, kick off the request in the entity
         service, and dispatch the success action upon completion
       </li>
-      <li>Create new selectors to retrieve the <b>isLoading</b> and <b>entities</b> state properties</li>
+      <li>Create new <b>selectors</b> to retrieve the <i>isLoading</i> and <i>entities</i> state properties</li>
     </ul>
   </li>
   <li>
-    Update the <b>product UI state</b> to fetch products from entity state and map them to the UI model
+    Update the <b>product UI state</b> to fetch products from entity state for display in the UI
     <ul>
       <li>
-        Create two new <b>actions</b> (one to trigger the entity request flow request, and one to store them after the
-        request completes)
+        Create a new <b>selector</b> to get the product <i>entities</i> (<i>IProductEntity</i>) from entity state mapped
+        to the UI model (<i>IProduct</i>)
       </li>
+    </ul>
+  </li>
+  <li>
+    Update the <b>product UI state</b> to store and fetch a selected product
+    <ul>
+      <li>
+        Create a new property on the UI <b>state model</b> to store a selected product's ID (<i>selectedProductId</i>)
+      </li>
+      <li>Create a new <b>action</b> to store the <i>selectedProductId</i></li>
+      <li>Add a new case to the <b>reducer</b> for the action above to update the <i>selectedProductId</i></li>
+      <li>
+        Create a new <b>selector</b> that gets the mapped selected product (<i>IProduct</i>), based on the
+        <i>entities</i> in the entity state and <i>selectedProductId</i> in the UI state
+      </li>
+    </ul>
+  </li>
+  <li>
+    Update the <b>product UI state</b> to store and fetch products from the cart
+    <ul>
+      <li>
+        Create a new property on the UI <b>state model</b> to store the IDs of products added to the cart
+        (<i>cartProductIds</i>)
+      </li>
+      <li>Create two new <b>actions</b> to add and remove products to/from <i>cartProductIds</i></li>
+      <li>Add a new cases to the <b>reducer</b> for the actions above to update <i>cartProductIds</i></li>
+      <li>
+        Create a new <b>selector</b> that gets the mapped products (<i>IProduct</i>), based on the
+        <i>cartProductIds</i> in the UI state
+      </li>
+      <li>Create a new <b>selector</b> that determines if a given product ID already exists in the cart</li>
+    </ul>
+  </li>
+  <li>
+    Update the <b>ProductUiFacade</b> to interact with your new selectors and actions
+    <ul>
+      src/app/state/ui/product-ui/<b>product-ui.facade.ts</b>
     </ul>
   </li>
 </ol>
