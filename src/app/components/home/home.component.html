@@ -1,11 +1,10 @@
 <h1>Welcome to the NgRx Online Store!</h1>
-
-<h2>Overview</h2>
-
 <p>This is a workshop designed to learn the basics of the Redux pattern and NgRx.</p>
+<p>You can fork the repo and complete it at your own pace following the steps below.</p>
 
-<p>Below are the technologies used in this web app:</p>
+<mat-divider></mat-divider>
 
+<p><b>Technologies:</b></p>
 <ul>
   <li><a target="_blank" href="https://angular.io/">Angular (v14)</a></li>
   <li><a target="_blank" href="https://material.angular.io/">Angular Material (v14)</a></li>
@@ -13,17 +12,81 @@
   <li><a target="_blank" href="https://ngrx.io/">NgRx (v14)</a></li>
 </ul>
 
-<p>There are two main pages in this workshop:</p>
+<mat-divider></mat-divider>
 
+<p><b>Pages:</b></p>
+<ul>
+  <li>
+    Products
+    <ul>
+      <li>A list of products that user can add to their cart</li>
+      <li>These products are populated from a mocked API response</li>
+    </ul>
+  </li>
+  <li>
+    Cart
+    <ul>
+      <li>Products the user has selected for purchase</li>
+      <li>These selections only last for the duration of the user's browser session</li>
+    </ul>
+  </li>
+</ul>
+
+<mat-divider></mat-divider>
+
+<p><b>Steps:</b></p>
 <ol>
-  <li><b>Products</b>: A list of products that a user can add to their cart.</li>
-  <li><b>Cart</b>: Products the user has selected for purchase.</li>
-</ol>
-
-<h2>Steps</h2>
-
-<ol>
-  <li>Step one</li>
-  <li>Step two</li>
-  <li>Step three</li>
+  <li>
+    Familiarize yourself with the codebase
+    <ul>
+      <li>
+        There are two main folders:
+        <ul>
+          <li>
+            src/app/<b>components</b>/
+            <ul>
+              <li>Contains all of the pages & child components that make up the UI</li>
+            </ul>
+          </li>
+          <li>
+            src/app/<b>state</b>/
+            <ul>
+              <li>Contains barebones implementations of the <b>UI</b> and <b>entity</b> state patterns</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Everything you'll need to complete the workshop is already declared/imported in the <b>AppModule</b></li>
+    </ul>
+  </li>
+  <li>
+    Set up the <b>StateModule</b> and <b>EntityModule</b> configurations in the following files:
+    <ul>
+      <li>src/app/state/ui/<b>ui-state.module.ts</b></li>
+      <li>src/app/state/entity/<b>entity-state.module.ts</b></li>
+    </ul>
+  </li>
+  <li>
+    Update the <b>product entity state</b> to fetch products and store them in state
+    <ul>
+      <li>
+        Create two new <b>actions</b> (one to trigger the request, and one to store them after the request completes)
+      </li>
+      <li>
+        Add new cases to the <b>reducer</b> for each action above to update the <b>isLoading</b>, <b>hasLoaded</b>, and
+        <b>entities</b> state properties
+      </li>
+      <li>
+        Add a new <b>effect</b> observable to listen for the request trigger action, kick off the request in the entity
+        service, and dispatch the success action upon completion
+      </li>
+      <li>Create new selectors to retrieve the <b>isLoading</b> and <b>entities</b> state properties</li>
+    </ul>
+  </li>
+  <li>
+    Update the <b>product UI state</b> to fetch products from entity state and map them to the UI model
+    <ul>
+      <li>asdf</li>
+    </ul>
+  </li>
 </ol>
