@@ -15,6 +15,7 @@ export class ProductUiFacade {
   selectedProduct$: Observable<IProduct>
   numSelectedProducts$: Observable<number>
   isProductInCart$: Observable<boolean>
+  shouldShowLoader$: Observable<boolean>
 
   constructor(private _store: Store<IAppState>, private _productEntityService: ProductEntityService) {}
 

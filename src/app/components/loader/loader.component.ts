@@ -2,6 +2,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { TemplatePortal } from '@angular/cdk/portal'
 import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
 import { Observable, of } from 'rxjs'
+import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
 
 @Component({
   selector: 'app-loader',
@@ -13,7 +14,11 @@ export class LoaderComponent implements OnInit, AfterViewInit {
   private _overlayRef: OverlayRef
   private _shouldShowLoader$: Observable<boolean>
 
-  constructor(private _viewContainerRef: ViewContainerRef, private _overlay: Overlay) {}
+  constructor(
+    private _facade: ProductUiFacade,
+    private _viewContainerRef: ViewContainerRef,
+    private _overlay: Overlay
+  ) {}
 
   ngOnInit(): void {
     // TODO: Check if any of app's state is loading via a selector
