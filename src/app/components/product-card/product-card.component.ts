@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core'
+import { Router } from '@angular/router'
 import { Observable, of } from 'rxjs'
 import { IProductEntity } from '../../state/entity/product-entity/product-entity.interface'
 import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
@@ -12,7 +13,12 @@ export class ProductCardComponent {
   @Input() product: IProductEntity
   @Input() view?: 'products' | 'cart' = 'products'
 
-  constructor(private _facade: ProductUiFacade) {}
+  constructor(private _facade: ProductUiFacade, private _router: Router) {}
+
+  viewProduct(id: number): void {
+    
+    this._router.navigate(['product'])
+  }
 
   addToCart(id: number): void {
     // TODO: Hook into state

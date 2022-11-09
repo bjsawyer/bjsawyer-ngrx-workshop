@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component'
 import { LoaderComponent } from './components/loader/loader.component'
 import { NavComponent } from './components/nav/nav.component'
 import { ProductCardComponent } from './components/product-card/product-card.component'
+import { ProductDetailsComponent } from './components/product-details/product-details.component'
 import { ProductsComponent } from './components/products/products.component'
 import { MaterialModule } from './material.module'
 import { EntityStateModule } from './state/entity/entity-state.module'
@@ -30,6 +31,10 @@ const ROUTES: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
+  },
+  {
+    path: 'product',
+    component: ProductDetailsComponent,
   },
   {
     path: 'cart',
@@ -57,6 +62,7 @@ const ROUTES: Routes = [
     ProductsComponent,
     CartComponent,
     ProductCardComponent,
+    ProductDetailsComponent,
   ],
   bootstrap: [AppComponent],
 })

@@ -13,12 +13,14 @@
   <mat-divider inset></mat-divider>
 
   <mat-card-actions>
+    <button *ngIf="view === 'products'" mat-button color="primary" (click)="viewProduct(product.id)">VIEW</button>
+
     <span class="spacer"></span>
 
     <button
       *ngIf="view === 'products'"
       mat-button
-      color="primary"
+      color="accent"
       [disabled]="(isProductInCart$(product.id) | async) === true"
       (click)="addToCart(product.id)"
     >

@@ -39,3 +39,7 @@ img {
 mat-card-actions {
   display: flex;
 }
+
+.mat-card-actions .mat-button {
+  margin: 0;
+}
