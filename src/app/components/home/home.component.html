@@ -2,159 +2,287 @@
 <p>This is a workshop designed to learn the basics of the Redux pattern and NgRx.</p>
 <p>You can fork the repo and complete it at your own pace following the steps below.</p>
 
-<mat-divider></mat-divider>
-
-<p><b>Technologies:</b></p>
-<ul>
-  <li><a target="_blank" href="https://angular.io/">Angular (v14)</a></li>
-  <li><a target="_blank" href="https://material.angular.io/">Angular Material (v14)</a></li>
-  <li><a target="_blank" href="https://rxjs.dev/">RxJS (v7)</a></li>
-  <li><a target="_blank" href="https://ngrx.io/">NgRx (v14)</a></li>
-</ul>
-
-<mat-divider></mat-divider>
-
-<p><b>Pages:</b></p>
-<ul>
-  <li>
-    Products
+<mat-accordion [multi]="true">
+  <mat-expansion-panel
+    [expanded]="technologiesOpened$ | async"
+    (opened)="panelOpened('technologies')"
+    (closed)="panelClosed('technologies')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>Technologies</mat-panel-title>
+    </mat-expansion-panel-header>
     <ul>
-      <li>A list of products that user can add to their cart</li>
-      <li>These products are populated from a mocked API response</li>
+      <li><a target="_blank" href="https://angular.io/">Angular (v14)</a></li>
+      <li><a target="_blank" href="https://material.angular.io/">Angular Material (v14)</a></li>
+      <li><a target="_blank" href="https://rxjs.dev/">RxJS (v7)</a></li>
+      <li><a target="_blank" href="https://ngrx.io/">NgRx (v14)</a></li>
     </ul>
-  </li>
-  <li>
-    Product Details
-    <ul>
-      <li>Details of a given product</li>
-    </ul>
-  </li>
-  <li>
-    Cart
-    <ul>
-      <li>Products the user has selected for purchase</li>
-    </ul>
-  </li>
-</ul>
+  </mat-expansion-panel>
 
-<mat-divider></mat-divider>
-
-<p><b>Steps:</b></p>
-<ol>
-  <li>
-    Fork this codebase and run the app in either Stackblitz or on your local machine
+  <mat-expansion-panel
+    [expanded]="conceptsOpened$ | async"
+    (opened)="panelOpened('concepts')"
+    (closed)="panelClosed('concepts')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>Concepts</mat-panel-title>
+    </mat-expansion-panel-header>
     <ul>
       <li>
-        To run it locally:
+        State
         <ul>
-          <li>Pull your forked repo</li>
-          <li>Run <i>npm install</i></li>
-          <li>Run <i>npm start</i></li>
+          <li>The current snapshot of your application and the tasks a user has taken to get to that point</li>
         </ul>
       </li>
-    </ul>
-  </li>
-  <li>
-    Familiarize yourself with the codebase
-    <ul>
       <li>
-        There are two main folders:
+        State Management
+        <ul>
+          <li>The process of tracking and updating your application's state, based on actions taken by a user</li>
+        </ul>
+      </li>
+      <li>
+        Redux Pattern
         <ul>
           <li>
-            src/app/<b>components</b>/
-            <ul>
-              <li>Contains all of the pages & child components that make up the UI</li>
-            </ul>
+            "A pattern and library for managing and updating application state, using events called <b>actions</b>"
           </li>
+          <li><a href="https://redux.js.org/" target="_blank">Redux</a></li>
           <li>
-            src/app/<b>state</b>/
-            <ul>
-              <li>Contains barebones implementations of the <b>UI</b> and <b>entity</b> state patterns</li>
-            </ul>
+            <a href="https://dev.to/thisdotmedia/introduction-to-redux-pattern-59f3" target="_blank"
+              >Introduction to Redux Pattern</a
+            >
           </li>
         </ul>
       </li>
-      <li>Everything you'll need to complete the workshop is already declared/imported in the <b>AppModule</b></li>
-    </ul>
-  </li>
-  <li>
-    Set up the <b>StateModule</b> and <b>EntityModule</b> configurations in the following files:
-    <ul>
-      <li>src/app/state/ui/<b>ui-state.module.ts</b></li>
-      <li>src/app/state/entity/<b>entity-state.module.ts</b></li>
-    </ul>
-  </li>
-  <li>
-    Update the <b>product entity state</b> to fetch products and store them in state
-    <ul>
       <li>
-        Create two new <b>actions</b> (one to trigger the request, and one to store them after the request completes)
+        NgRx
+        <ul>
+          <li>"A framework for building reactive applications in Angular"</li>
+          <li><a href="https://ngrx.io/guide/store/why" target="_blank">Why use NgRx Store for State Management</a></li>
+        </ul>
       </li>
       <li>
-        Add new cases to the <b>reducer</b> for each action above to update the <i>isLoading</i>, <i>hasLoaded</i>, and
-        <i>entities</i> state properties
+        UI State
+        <ul>
+          <li>A slice of state that handles UI-specific tasks</li>
+          <li>
+            Examples:
+            <ul>
+              <li>Opening or closing a modal</li>
+              <li>Storing which item a user selected</li>
+              <li>Pagination (i.e. which page a user is on or what column they chose to sort by)</li>
+            </ul>
+          </li>
+          <li>Components should derive their data from UI State, via a <b>facade</b> class/service</li>
+        </ul>
       </li>
       <li>
-        Add a new <b>effect</b> observable to listen for the request trigger action, kick off the request in the entity
-        service, and dispatch the success action upon completion
+        Entity State
+        <ul>
+          <li>A slice of state that handles querying and manipulation of entity collections</li>
+          <li>
+            Instead of interacting with the UI, Entity State stores core data from API requests for use <i>within</i> UI
+            State
+          </li>
+          <li><a href="https://ngrx.io/guide/entity" target="_blank">@ngrx/entity</a></li>
+        </ul>
       </li>
-      <li>Create new <b>selectors</b> to retrieve the <i>isLoading</i> and <i>entities</i> state properties</li>
-    </ul>
-  </li>
-  <li>
-    Update the <b>product UI state</b> to fetch products from entity state for display in the UI
-    <ul>
       <li>
-        Create a new <b>selector</b> to get the product <i>entities</i> (<i>IProductEntity</i>) from entity state mapped
-        to the UI model (<i>IProduct</i>)
+        Store
+        <ul>
+          <li>"Holds the whole state tree of your application"</li>
+          <li>"The only way to change the state inside it is to dispatch an action on it"</li>
+          <li><a href="https://redux.js.org/api/store" target="_blank">Store</a></li>
+        </ul>
       </li>
-    </ul>
-  </li>
-  <li>
-    Update the <b>product UI state</b> to store and fetch a selected product
-    <ul>
       <li>
-        Create a new property on the UI <b>state model</b> to store a selected product's ID (<i>selectedProductId</i>)
+        Action
+        <ul>
+          <li>"A plain object that represents an intention to change the state</li>
+          <li>"Actions are the only way to get data into the store"</li>
+          <li>
+            <a href="https://redux.js.org/understanding/thinking-in-redux/glossary#action" target="_blank">Action</a>
+          </li>
+        </ul>
       </li>
-      <li>Create a new <b>action</b> to store the <i>selectedProductId</i></li>
-      <li>Add a new case to the <b>reducer</b> for the action above to update the <i>selectedProductId</i></li>
       <li>
-        Create a new <b>selector</b> that gets the mapped selected product (<i>IProduct</i>), based on the
-        <i>entities</i> in the entity state and <i>selectedProductId</i> in the UI state
+        Reducer
+        <ul>
+          <li>"A function that accepts an accumulation and a value and returns a new accumulation"</li>
+          <li>"Reducers calculate a new state given the previous state and an action"</li>
+          <li>
+            <a href="https://redux.js.org/understanding/thinking-in-redux/glossary#reducer" target="_blank">Reducer</a>
+          </li>
+        </ul>
       </li>
-    </ul>
-  </li>
-  <li>
-    Update the <b>product UI state</b> to store and fetch products from the cart
-    <ul>
       <li>
-        Create a new property on the UI <b>state model</b> to store the IDs of products added to the cart
-        (<i>cartProductIds</i>)
+        Effect
+        <ul>
+          <li>An observable that listens for an action, performs a side effect, and returns a new action</li>
+          <li>Effects are useful for making API requests when an action is dispatched</li>
+          <li>
+            <a href="https://ngrx.io/guide/effects" target="_blank">@ngrx/effects</a>
+          </li>
+        </ul>
       </li>
-      <li>Create two new <b>actions</b> to add and remove products to/from <i>cartProductIds</i></li>
-      <li>Add a new cases to the <b>reducer</b> for the actions above to update <i>cartProductIds</i></li>
       <li>
-        Create a new <b>selector</b> that gets the mapped products (<i>IProduct</i>), based on the
-        <i>cartProductIds</i> in the UI state
+        Selector
+        <ul>
+          <li>"Pure function used for obtaining a slice of store state"</li>
+          <li>
+            <a href="https://ngrx.io/guide/store/selectors" target="_blank">@ngrx/effects</a>
+          </li>
+        </ul>
       </li>
-      <li>Create a new <b>selector</b> that determines if a given product ID already exists in the cart</li>
+      <li>
+        Facade
+        <ul>
+          <li>
+            "A programming pattern in which a simpler public interface is provided to mask a composition of internal,
+            more-complex, component usages"
+          </li>
+          <li>These are services injected into components that abstract all interactions with NgRx/state</li>
+          <li>Components should never directly use the store, selectors, etc.</li>
+          <li>
+            <a
+              href="https://thomasburlesonia.medium.com/ngrx-facades-better-state-management-82a04b9a1e39"
+              target="_blank"
+              >NgRx + Facades: Better State Management</a
+            >
+          </li>
+        </ul>
+      </li>
     </ul>
-  </li>
-  <li>
-    Update the <b>ProductUiFacade</b> to interact with your new selectors and actions
-    <ul>
-      <li>src/app/state/ui/product-ui/<b>product-ui.facade.ts</b></li>
-    </ul>
-  </li>
-  <li>
-    Update all components with TODO comments to interact with the facade:
-    <ul>
-      <li>src/app/components/<b>loader</b></li>
-      <li>src/app/components/<b>nav</b></li>
-      <li>src/app/components/<b>products</b></li>
-      <li>src/app/components/<b>product-card</b></li>
-      <li>src/app/components/<b>product-details</b></li>
-      <li>src/app/components/<b>cart</b></li>
-    </ul>
-  </li>
-</ol>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    [expanded]="stepsOpened$ | async"
+    (opened)="panelOpened('steps')"
+    (closed)="panelClosed('steps')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>Steps</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <ol>
+      <li>
+        Fork this codebase and run the app in either Stackblitz or on your local machine
+        <ul>
+          <li>
+            To run it locally:
+            <ul>
+              <li>Pull your forked repo</li>
+              <li>Run <i>npm install</i></li>
+              <li>Run <i>npm start</i></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Familiarize yourself with the codebase
+        <ul>
+          <li>
+            There are two main folders:
+            <ul>
+              <li>
+                src/app/<b>components</b>/
+                <ul>
+                  <li>Contains all of the pages & child components that make up the UI</li>
+                </ul>
+              </li>
+              <li>
+                src/app/<b>state</b>/
+                <ul>
+                  <li>Contains barebones implementations of the <b>UI</b> and <b>entity</b> state patterns</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Everything you'll need to complete the workshop is already declared/imported in the <b>AppModule</b></li>
+        </ul>
+      </li>
+      <li>
+        Set up the <b>StateModule</b> and <b>EntityModule</b> configurations in the following files:
+        <ul>
+          <li>src/app/state/ui/<b>ui-state.module.ts</b></li>
+          <li>src/app/state/entity/<b>entity-state.module.ts</b></li>
+        </ul>
+      </li>
+      <li>
+        Update the <b>product entity state</b> to fetch products and store them in state
+        <ul>
+          <li>
+            Create two new <b>actions</b> (one to trigger the request, and one to store them after the request
+            completes)
+          </li>
+          <li>
+            Add new cases to the <b>reducer</b> for each action above to update the <i>isLoading</i>, <i>hasLoaded</i>,
+            and <i>entities</i> state properties
+          </li>
+          <li>
+            Add a new <b>effect</b> observable to listen for the request trigger action, kick off the request in the
+            entity service, and dispatch the success action upon completion
+          </li>
+          <li>Create new <b>selectors</b> to retrieve the <i>isLoading</i> and <i>entities</i> state properties</li>
+        </ul>
+      </li>
+      <li>
+        Update the <b>product UI state</b> to fetch products from entity state for display in the UI
+        <ul>
+          <li>
+            Create a new <b>selector</b> to get the product <i>entities</i> (<i>IProductEntity</i>) from entity state
+            mapped to the UI model (<i>IProduct</i>)
+          </li>
+        </ul>
+      </li>
+      <li>
+        Update the <b>product UI state</b> to store and fetch a selected product
+        <ul>
+          <li>
+            Create a new property on the UI <b>state model</b> to store a selected product's ID
+            (<i>selectedProductId</i>)
+          </li>
+          <li>Create a new <b>action</b> to store the <i>selectedProductId</i></li>
+          <li>Add a new case to the <b>reducer</b> for the action above to update the <i>selectedProductId</i></li>
+          <li>
+            Create a new <b>selector</b> that gets the mapped selected product (<i>IProduct</i>), based on the
+            <i>entities</i> in the entity state and <i>selectedProductId</i> in the UI state
+          </li>
+        </ul>
+      </li>
+      <li>
+        Update the <b>product UI state</b> to store and fetch products from the cart
+        <ul>
+          <li>
+            Create a new property on the UI <b>state model</b> to store the IDs of products added to the cart
+            (<i>cartProductIds</i>)
+          </li>
+          <li>Create two new <b>actions</b> to add and remove products to/from <i>cartProductIds</i></li>
+          <li>Add a new cases to the <b>reducer</b> for the actions above to update <i>cartProductIds</i></li>
+          <li>
+            Create a new <b>selector</b> that gets the mapped products (<i>IProduct</i>), based on the
+            <i>cartProductIds</i> in the UI state
+          </li>
+          <li>Create a new <b>selector</b> that determines if a given product ID already exists in the cart</li>
+        </ul>
+      </li>
+      <li>
+        Update the <b>ProductUiFacade</b> to interact with your new selectors and actions
+        <ul>
+          <li>src/app/state/ui/product-ui/<b>product-ui.facade.ts</b></li>
+        </ul>
+      </li>
+      <li>
+        Update all components with TODO comments to interact with the facade:
+        <ul>
+          <li>src/app/components/<b>loader</b></li>
+          <li>src/app/components/<b>nav</b></li>
+          <li>src/app/components/<b>products</b></li>
+          <li>src/app/components/<b>product-card</b></li>
+          <li>src/app/components/<b>product-details</b></li>
+          <li>src/app/components/<b>cart</b></li>
+        </ul>
+      </li>
+    </ol>
+  </mat-expansion-panel>
+</mat-accordion>
