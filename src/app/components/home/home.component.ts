@@ -33,10 +33,13 @@ export class HomeComponent implements OnInit {
     switch (section) {
       case 'technologies':
         this._homeService.technologiesOpened$.next(wasOpened)
+        break
       case 'concepts':
         this._homeService.conceptsOpened$.next(wasOpened)
+        break
       case 'steps':
         this._homeService.stepsOpened$.next(wasOpened)
+        break
     }
   }
 }

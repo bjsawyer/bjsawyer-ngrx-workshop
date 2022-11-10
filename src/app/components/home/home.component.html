@@ -2,7 +2,7 @@
 <p>This is a workshop designed to learn the basics of the Redux pattern and NgRx.</p>
 <p>You can fork the repo and complete it at your own pace following the steps below.</p>
 
-<mat-accordion [multi]="true">
+<mat-accordion multi #acc>
   <mat-expansion-panel
     [expanded]="technologiesOpened$ | async"
     (opened)="panelOpened('technologies')"
