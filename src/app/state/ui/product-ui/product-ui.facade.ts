@@ -9,14 +9,20 @@ import { IProduct } from './product.interface'
   providedIn: 'root',
 })
 export class ProductUiFacade {
-  // TODO: Update below properties with selectors
+  // TODO: Update below properties with selectors in the constructor
   products$: Observable<IProduct[]>
   cart$: Observable<IProduct[]>
   selectedProduct$: Observable<IProduct>
   numSelectedProducts$: Observable<number>
   shouldShowLoader$: Observable<boolean>
 
-  constructor(private _store: Store<IAppState>, private _productEntityService: ProductEntityService) {}
+  constructor(private _store: Store<IAppState>, private _productEntityService: ProductEntityService) {
+    // this.products$ = ...
+    // this.cart$ = ...
+    // this.selectedProduct$ = ...
+    // this.numSelectedProducts$ = ...
+    // this.shouldShowLoader$ = ...
+  }
 
   getProducts(): Observable<IProduct[]> {
     /**
