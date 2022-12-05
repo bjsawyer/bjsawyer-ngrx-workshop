@@ -1,17 +1,18 @@
 import { Action } from '@ngrx/store'
+import { IProductEntity } from './product-entity.interface'
 
 export enum ProductEntityActionType {
-  EXAMPLE = '[Product Entity] Example Action',
-  EXAMPLE_SUCCESS = '[Product Entity] Example Success Action',
+  GET_PRODUCTS = '[Product Entity] Get Products',
+  GET_PRODUCTS_SUCCESS = '[Product Entity] Get Products Success',
 }
 
-export class ExampleEntityAction implements Action {
-  readonly type = ProductEntityActionType.EXAMPLE
-  constructor(public payload: boolean) {}
+export class GetProductsEntityAction implements Action {
+  readonly type = ProductEntityActionType.GET_PRODUCTS
 }
 
-export class ExampleEntitySuccessAction implements Action {
-  readonly type = ProductEntityActionType.EXAMPLE_SUCCESS
+export class GetProductsEntitySuccessAction implements Action {
+  readonly type = ProductEntityActionType.GET_PRODUCTS_SUCCESS
+  public constructor(public payload: IProductEntity[]) {}
 }
 
-export type ProductEntityActions = ExampleEntityAction | ExampleEntitySuccessAction
+export type ProductEntityActions = GetProductsEntityAction | GetProductsEntitySuccessAction

@@ -1,8 +1,17 @@
 import { Injectable } from '@angular/core'
 import { Store } from '@ngrx/store'
+import { GetProductsEntityAction } from 'app/state/entity/product-entity/product-entity.actions'
+import { selectIsProductEntitiesLoading } from 'app/state/entity/product-entity/product-entity.selectors'
+import { Observable } from 'rxjs'
 import { IAppState } from '../../../state/app.state'
-import { map, Observable } from 'rxjs'
-import { ProductEntityService } from '../../entity/product-entity/product-entity.service'
+import { AddToCartUiAction, RemoveFromCartUiAction, SetSelectedProductIdUiAction } from './product-ui.actions'
+import {
+  selectCartProducts,
+  selectIsProductAlreadyInCart,
+  selectNumProductsInCart,
+  selectProducts,
+  selectSelectedProduct,
+} from './product-ui.selectors'
 import { IProduct } from './product.interface'
 
 @Injectable({
@@ -10,16 +19,16 @@ import { IProduct } from './product.interface'
 })
 export class ProductUiFacade {
   // TODO: Update below properties with selectors
-  products$: Observable<IProduct[]>
-  cart$: Observable<IProduct[]>
-  selectedProduct$: Observable<IProduct>
-  numSelectedProducts$: Observable<number>
-  isProductInCart$: Observable<boolean>
-  shouldShowLoader$: Observable<boolean>
+  allProducts$: Observable<IProduct[]> = this._store.select(selectProducts)
+  cart$: Observable<IProduct[]> = this._store.select(selectCartProducts)
+  selectedProduct$: Observable<IProduct> = this._store.select(selectSelectedProduct)
+  numProductsInCart$: Observable<number> = this._store.select(selectNumProductsInCart)
+  isProductInCart$ = (id: number): Observable<boolean> => this._store.select(selectIsProductAlreadyInCart(id))
+  shouldShowLoader$: Observable<boolean> = this._store.select(selectIsProductEntitiesLoading)
 
-  constructor(private _store: Store<IAppState>, private _productEntityService: ProductEntityService) {}
+  constructor(private _store: Store<IAppState>) {}
 
-  getProducts(): Observable<IProduct[]> {
+  getProducts(): void {
     /**
      * TODO: Refactor as such:
      * 1. Move API request logic to entity state
@@ -27,25 +36,20 @@ export class ProductUiFacade {
      * 3. Update this to be a void method that simply dispatches an action
      * 4. Remove `ProductEntityService` from facade
      */
-    return this._productEntityService.getAllProducts$().pipe(
-      map((productEntities) =>
-        productEntities.map(
-          (productEntity): IProduct => ({
-            id: productEntity.id,
-            title: productEntity.title,
-            price: `$${(Math.round(productEntity.price * 100) / 100).toFixed(2)}`,
-            image: productEntity.image,
-          })
-        )
-      )
-    )
+    return this._store.dispatch(new GetProductsEntityAction())
+  }
+
+  setSelectedProduct(id: number): void {
+    this._store.dispatch(new SetSelectedProductIdUiAction(id))
   }
 
   addProductToCart(id: number): void {
     // TODO: Dispatch action
+    this._store.dispatch(new AddToCartUiAction(id))
   }
 
   removeProductFromCart(id: number): void {
     // TODO: Dispatch action
+    this._store.dispatch(new RemoveFromCartUiAction(id))
   }
 }

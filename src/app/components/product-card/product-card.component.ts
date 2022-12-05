@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
-import { Observable, of } from 'rxjs'
+import { Observable } from 'rxjs'
 import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
 import { IProduct } from '../../state/ui/product-ui/product.interface'
 
@@ -17,21 +17,22 @@ export class ProductCardComponent {
 
   viewProduct(id: number): void {
     // TODO: Dispatch action to set selected product ID in state
+    this._facade.setSelectedProduct(id)
     this._router.navigate(['product'])
   }
 
   addToCart(id: number): void {
     // TODO: Hook into state
-    console.log(`ADD clicked for product ${id}`)
+    this._facade.addProductToCart(id)
   }
 
   removeFromCart(id: number): void {
     // TODO: Hook into state
-    console.log(`REMOVE clicked for product ${id}`)
+    this._facade.removeProductFromCart(id)
   }
 
   isProductInCart$(id: number): Observable<boolean> {
     // TODO: Use a selector to determine if a product is in the cart
-    return of(false)
+    return this._facade.isProductInCart$(id)
   }
 }

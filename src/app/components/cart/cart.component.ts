@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { IProduct } from '../../state/ui/product-ui/product.interface'
-import { Observable, of } from 'rxjs'
+import { Observable } from 'rxjs'
 import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
+import { IProduct } from '../../state/ui/product-ui/product.interface'
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +15,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO: Get items in cart from state
-    this.cart$ = of([])
+    this.cart$ = this._facade.cart$
   }
 }

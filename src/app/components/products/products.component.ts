@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
-import { IProduct } from '../../state/ui/product-ui/product.interface'
 import { Observable } from 'rxjs'
 import { ProductUiFacade } from '../../state/ui/product-ui/product-ui.facade'
+import { IProduct } from '../../state/ui/product-ui/product.interface'
 
 @Component({
   selector: 'app-products',
@@ -14,7 +14,8 @@ export class ProductsComponent {
   constructor(private _facade: ProductUiFacade) {}
 
   ngOnInit(): void {
-    // TODO: Get products from a state selector instead of directly from the API request
-    this.products$ = this._facade.getProducts()
+    // TODO: Dispatch action to get products and retrieve them from a state selector instead of directly from the API request
+    this.products$ = this._facade.allProducts$
+    this._facade.getProducts()
   }
 }

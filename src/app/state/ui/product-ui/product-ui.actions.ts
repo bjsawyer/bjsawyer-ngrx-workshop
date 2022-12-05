@@ -1,17 +1,24 @@
 import { Action } from '@ngrx/store'
 
 export enum ProductUiActionType {
-  EXAMPLE = '[Product UI] Example Action',
-  EXAMPLE_SUCCESS = '[Product UI] Example Success Action',
+  SET_SELECTED_PRODUCT_ID = '[Product UI] Set Selected Product ID',
+  ADD_TO_CART = '[Product UI] Add to Cart',
+  REMOVE_FROM_CART = '[Product UI] Remove from Cart',
 }
 
-export class ExampleUiAction implements Action {
-  readonly type = ProductUiActionType.EXAMPLE
-  constructor(public payload: boolean) {}
+export class SetSelectedProductIdUiAction implements Action {
+  readonly type = ProductUiActionType.SET_SELECTED_PRODUCT_ID
+  constructor(public payload: number) {}
 }
 
-export class ExampleUiSuccessAction implements Action {
-  readonly type = ProductUiActionType.EXAMPLE_SUCCESS
+export class AddToCartUiAction implements Action {
+  readonly type = ProductUiActionType.ADD_TO_CART
+  constructor(public payload: number) {}
 }
 
-export type ProductUiActions = ExampleUiAction | ExampleUiSuccessAction
+export class RemoveFromCartUiAction implements Action {
+  readonly type = ProductUiActionType.REMOVE_FROM_CART
+  constructor(public payload: number) {}
+}
+
+export type ProductUiActions = SetSelectedProductIdUiAction | AddToCartUiAction | RemoveFromCartUiAction
