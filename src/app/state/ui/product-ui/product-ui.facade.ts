@@ -23,7 +23,6 @@ export class ProductUiFacade {
   cart$: Observable<IProduct[]> = this._store.select(selectCartProducts)
   selectedProduct$: Observable<IProduct> = this._store.select(selectSelectedProduct)
   numProductsInCart$: Observable<number> = this._store.select(selectNumProductsInCart)
-  isProductInCart$ = (id: number): Observable<boolean> => this._store.select(selectIsProductAlreadyInCart(id))
   shouldShowLoader$: Observable<boolean> = this._store.select(selectIsProductEntitiesLoading)
 
   constructor(private _store: Store<IAppState>) {}
@@ -51,5 +50,10 @@ export class ProductUiFacade {
   removeProductFromCart(id: number): void {
     // TODO: Dispatch action
     this._store.dispatch(new RemoveFromCartUiAction(id))
+  }
+
+  isProductInCart$(id: number): Observable<boolean> {
+    // TODO: Get from selector
+    return this._store.select(selectIsProductAlreadyInCart(id))
   }
 }
