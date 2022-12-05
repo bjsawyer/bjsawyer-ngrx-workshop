@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Store } from '@ngrx/store'
+import { map, Observable, of } from 'rxjs'
 import { IAppState } from '../../../state/app.state'
-import { map, Observable } from 'rxjs'
 import { ProductEntityService } from '../../entity/product-entity/product-entity.service'
 import { IProduct } from './product.interface'
 
@@ -14,7 +14,6 @@ export class ProductUiFacade {
   cart$: Observable<IProduct[]>
   selectedProduct$: Observable<IProduct>
   numSelectedProducts$: Observable<number>
-  isProductInCart$: Observable<boolean>
   shouldShowLoader$: Observable<boolean>
 
   constructor(private _store: Store<IAppState>, private _productEntityService: ProductEntityService) {}
@@ -41,11 +40,20 @@ export class ProductUiFacade {
     )
   }
 
+  setSelectedProduct(id: number): void {
+    // TODO: Dispatch action
+  }
+
   addProductToCart(id: number): void {
     // TODO: Dispatch action
   }
 
   removeProductFromCart(id: number): void {
     // TODO: Dispatch action
+  }
+
+  isProductInCart$(id: number): Observable<boolean> {
+    // TODO: Get from selector
+    return of(false)
   }
 }
