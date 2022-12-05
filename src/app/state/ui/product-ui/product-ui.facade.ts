@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { GetProductsEntityAction } from 'app/state/entity/product-entity/product-entity.actions'
-import { selectIsProductEntitiesLoading } from 'app/state/entity/product-entity/product-entity.selectors'
+import { GetProductsEntityAction } from '../../entity/product-entity/product-entity.actions'
+import { selectIsProductEntitiesLoading } from '../../entity/product-entity/product-entity.selectors'
 import { Observable } from 'rxjs'
 import { IAppState } from '../../../state/app.state'
 import { AddToCartUiAction, RemoveFromCartUiAction, SetSelectedProductIdUiAction } from './product-ui.actions'
@@ -18,14 +18,20 @@ import { IProduct } from './product.interface'
   providedIn: 'root',
 })
 export class ProductUiFacade {
-  // TODO: Update below properties with selectors
-  allProducts$: Observable<IProduct[]> = this._store.select(selectProducts)
-  cart$: Observable<IProduct[]> = this._store.select(selectCartProducts)
-  selectedProduct$: Observable<IProduct> = this._store.select(selectSelectedProduct)
-  numProductsInCart$: Observable<number> = this._store.select(selectNumProductsInCart)
-  shouldShowLoader$: Observable<boolean> = this._store.select(selectIsProductEntitiesLoading)
+  // TODO: Update below properties with selectors in the constructor
+  allProducts$: Observable<IProduct[]>
+  cart$: Observable<IProduct[]>
+  selectedProduct$: Observable<IProduct>
+  numProductsInCart$: Observable<number>
+  shouldShowLoader$: Observable<boolean>
 
-  constructor(private _store: Store<IAppState>) {}
+  constructor(private _store: Store<IAppState>) {
+    this.allProducts$ = this._store.select(selectProducts)
+    this.cart$ = this._store.select(selectCartProducts)
+    this.selectedProduct$ = this._store.select(selectSelectedProduct)
+    this.numProductsInCart$ = this._store.select(selectNumProductsInCart)
+    this.shouldShowLoader$ = this._store.select(selectIsProductEntitiesLoading)
+  }
 
   getProducts(): void {
     /**

@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store'
-import { selectAllProductEntities } from 'app/state/entity/product-entity/product-entity.selectors'
+import { selectAllProductEntities } from '../../entity/product-entity/product-entity.selectors'
 import { IAppState } from '../../app.state'
 import { IProductUiState, PRODUCT_UI_STATE_NAME } from './product-ui.state'
 import { IProduct } from './product.interface'
