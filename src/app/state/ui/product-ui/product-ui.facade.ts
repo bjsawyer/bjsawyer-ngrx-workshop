@@ -18,20 +18,14 @@ import { IProduct } from './product.interface'
   providedIn: 'root',
 })
 export class ProductUiFacade {
-  // TODO: Update below properties with selectors in the constructor
-  allProducts$: Observable<IProduct[]>
-  cart$: Observable<IProduct[]>
-  selectedProduct$: Observable<IProduct>
-  numProductsInCart$: Observable<number>
-  shouldShowLoader$: Observable<boolean>
+  // TODO: Update below properties with selectors
+  allProducts$: Observable<IProduct[]> = this._store.select(selectProducts)
+  cart$: Observable<IProduct[]> = this._store.select(selectCartProducts)
+  selectedProduct$: Observable<IProduct> = this._store.select(selectSelectedProduct)
+  numProductsInCart$: Observable<number> = this._store.select(selectNumProductsInCart)
+  shouldShowLoader$: Observable<boolean> = this._store.select(selectIsProductEntitiesLoading)
 
-  constructor(private _store: Store<IAppState>) {
-    this.allProducts$ = this._store.select(selectProducts)
-    this.cart$ = this._store.select(selectCartProducts)
-    this.selectedProduct$ = this._store.select(selectSelectedProduct)
-    this.numProductsInCart$ = this._store.select(selectNumProductsInCart)
-    this.shouldShowLoader$ = this._store.select(selectIsProductEntitiesLoading)
-  }
+  constructor(private _store: Store<IAppState>) {}
 
   getProducts(): void {
     /**
